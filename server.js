@@ -12,7 +12,7 @@ var app = express();
 hbs.registerPartials(__dirname + '/views/partials');
 
 app.set('view engine', hbs);
-//setting static page with middleware
+
 //express middleware that keep track how server is working
 app.use((req,res,next) => {
     var now = new Date().toString();
@@ -26,6 +26,7 @@ app.use((req,res,next) => {
 //    res.render('maintenance.hbs');
 // });
 
+//setting static page with middleware
 app.use(express.static(__dirname + '/public'));
 
 
@@ -51,10 +52,22 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     //send data to page
     res.render('about.hbs', {
-        pageTitle: 'AboutPage',
+        pageTitle: 'About Page',
     });
 });
 
+
+//1. project page challenge
+//2. add view portfolia at middle text
+//3. partials header add porfolio a href
+// push to github and heroku
+
+app.get('/project', (req,res) => {
+    res.render('project.hbs', {
+        pageTitle: 'Project Page',
+
+    })
+});
 
 app.get('/bad', (req, res) => {
     res.send({
